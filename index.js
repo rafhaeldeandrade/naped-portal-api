@@ -1,9 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+
 const userRoute = require('./routes/userRoute');
 const categoryRoute = require('./routes/categoryRoute');
 const blogpostRoute = require('./routes/blogpostRoute');
-const defaultErrorHandler = require('./middlewares/defaultError');
+
+const defaultErrorHandler = require('./middlewares/defaultErrorHandler');
+const domainErrorHandler = require('./middlewares/domainErrorHandler');
+
 require('dotenv').config();
 
 const app = express();
@@ -13,6 +17,7 @@ app.use('/users', userRoute);
 app.use('/categories', categoryRoute);
 app.use('/blogposts', blogpostRoute);
 
+app.use(domainErrorHandler);
 app.use(defaultErrorHandler);
 
 const { API_PORT } = process.env;
