@@ -1,17 +1,17 @@
 const rescue = require('express-rescue');
 const userService = require('../services/userService');
 
-const getAll = rescue(async (_req, res) => {
-  const users = await userService.getAll();
+const getAllUsers = rescue(async (_req, res) => {
+  const users = await userService.getAllUsers();
 
   return res.status(200).json(users);
 });
 
-const findById = rescue(async (req, res) => {
+const findUserById = rescue(async (req, res) => {
   const { id } = req.params;
-  const user = await userService.findById(id);
+  const user = await userService.findUserById(id);
 
   return res.status(200).json(user);
 });
 
-module.exports = { getAll, findById };
+module.exports = { getAllUsers, findUserById };
