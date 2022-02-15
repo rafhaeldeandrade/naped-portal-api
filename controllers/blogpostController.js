@@ -9,9 +9,9 @@ const getAllBlogposts = rescue(async (_req, res) => {
 
 const findBlogpostById = rescue(async (req, res) => {
   const { id } = req.params;
-  const category = await blogpostService.findBlogpostById(id);
+  const blogpost = await blogpostService.findBlogpostById(id);
 
-  return res.status(200).json(category);
+  return res.status(200).json(blogpost);
 });
 
 module.exports = { getAllBlogposts, findBlogpostById };

@@ -3,8 +3,6 @@ const { Category } = require('../models');
 const getAllCategories = async () => {
   const categories = Category.findAll();
 
-  if (!categories) return [];
-
   return categories;
 };
 

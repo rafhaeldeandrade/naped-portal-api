@@ -3,8 +3,6 @@ const { Blogpost } = require('../models');
 const getAllBlogposts = async () => {
   const blogposts = Blogpost.findAll();
 
-  if (!blogposts) return [];
-
   return blogposts;
 };
 

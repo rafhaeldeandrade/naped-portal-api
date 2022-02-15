@@ -1,9 +1,7 @@
-const { User } = require('../models');
+const { User, Blogpost } = require('../models');
 
 const getAllUsers = async () => {
   const users = User.findAll({ attributes: { exclude: ['password'] } });
-
-  if (!users) return [];
 
   return users;
 };
@@ -21,4 +19,14 @@ const findUserById = async (id) => {
   return user;
 };
 
-module.exports = { getAllUsers, findUserById };
+const findBlogpostsByUserId = async (userId) => {
+  const blogposts = await Blogpost.findAll({ where: { userId } });
+
+  const blogpostNotFoundError = new Error(`User doesn't have any post`);
+  blogpostNotFoundError.code = 'NOT_FOUND';
+  if (!blogposts.length) throw blogpostNotFoundError;
+
+  return blogposts;
+};
+
+module.exports = { getAllUsers, findUserById, findBlogpostsByUserId };
