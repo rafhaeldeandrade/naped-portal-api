@@ -32,6 +32,7 @@ module.exports = {
       profileImage: {
         allowNull: true,
         type: Sequelize.STRING,
+        defaultValue: null,
       },
     });
   },

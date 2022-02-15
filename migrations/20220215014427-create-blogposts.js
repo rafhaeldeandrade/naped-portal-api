@@ -19,7 +19,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
-      writerId: {
+      userId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
@@ -40,16 +40,19 @@ module.exports = {
         },
       },
       postImage: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.STRING,
+        defaultValue: null,
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
+        defaultValue: Sequelize.NOW,
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
+        defaultValue: Sequelize.NOW,
       },
     });
   },
